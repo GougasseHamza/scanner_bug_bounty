@@ -604,3 +604,67 @@ subfinder -d scanme.nmap.org -o subs.txt
 2025-10-26 14:12:12,859 [INFO] Sending to AI...
 2025-10-26 14:12:13,974 [INFO] AI → COMMAND: sqlmap -u http://testphp.vulnweb.com/login.php --level 5 --risk 3 --crawl=5 --dump-all -o sqlmap_exploit.txt
 2025-10-26 14:12:13,974 [INFO] Executing: sqlmap -u http://testphp.vulnweb.com/login.php --level 5 --risk 3 --crawl=5 --dump-all -o sqlmap_exploit.txt
+2025-10-27 22:30:42,699 [INFO] === BUG BOUNTY AUTOMATOR v1.0 - NYX CORE ACTIVE ===
+2025-10-27 22:31:04,724 [INFO] === BUG BOUNTY AUTOMATOR v1.0 - NYX CORE ACTIVE ===
+2025-10-27 22:31:50,773 [INFO] === BUG BOUNTY AUTOMATOR v1.0 - NYX CORE ACTIVE ===
+2025-10-27 22:31:50,787 [INFO] Target: http.vulnweb.com
+2025-10-27 22:31:50,787 [INFO] Methodology Phases: reconnaissance, scanning, exploitation
+2025-10-27 22:31:50,787 [INFO] 
+--- STEP 1 | PHASE: reconnaissance ---
+2025-10-27 22:31:50,788 [INFO] Sending to AI...
+2025-10-27 22:31:53,188 [INFO] AI → COMMAND: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:31:53,188 [INFO] Executing: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:48:26,571 [INFO] Target: testphp.vulnweb.com
+2025-10-27 22:48:26,571 [INFO] Methodology Phases: reconnaissance, scanning, exploitation
+2025-10-27 22:48:26,573 [INFO] 
+--- STEP 1 | PHASE: reconnaissance ---
+2025-10-27 22:48:29,967 [INFO] AI → COMMAND: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:48:29,967 [INFO] AI → REASONING: Starting with passive subdomain enumeration to identify potential subdomains of the target.
+2025-10-27 22:48:29,969 [INFO] Executing: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:48:39,163 [WARNING] Command produced no output: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:48:43,397 [ERROR] Fatal error: name 'json' is not defined
+Traceback (most recent call last):
+  File "/home/kyyblin/scanner_bug_bounty/main.py", line 345, in main
+    await automator.run()
+  File "/home/kyyblin/scanner_bug_bounty/main.py", line 124, in run
+    self._log_to_file(step, current_phase, command, output, analysis)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kyyblin/scanner_bug_bounty/main.py", line 301, in _log_to_file
+    f.write(f"ANALYSIS:\n{json.dumps(analysis, indent=2)}\n\n")
+                          ^^^^
+NameError: name 'json' is not defined. Did you forget to import 'json'?
+2025-10-27 22:49:17,616 [INFO] Target: testphp.vulnweb.com
+2025-10-27 22:49:17,616 [INFO] Methodology Phases: reconnaissance, scanning, exploitation
+2025-10-27 22:49:17,618 [INFO] 
+--- STEP 1 | PHASE: reconnaissance ---
+2025-10-27 22:49:20,435 [INFO] AI → COMMAND: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:49:20,435 [INFO] AI → REASONING: Starting with passive subdomain enumeration to identify potential subdomains for further analysis.
+2025-10-27 22:49:20,437 [INFO] Executing: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:49:29,437 [WARNING] Command produced no output: subfinder -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:49:35,674 [INFO] 
+--- STEP 2 | PHASE: reconnaissance ---
+2025-10-27 22:49:38,455 [INFO] AI → COMMAND: assetfinder --subs-only testphp.vulnweb.com > subdomains.txt
+2025-10-27 22:49:38,455 [INFO] AI → REASONING: Since subfinder did not yield any results, trying assetfinder for passive subdomain enumeration as an alternative approach.
+2025-10-27 22:49:38,458 [INFO] Executing: assetfinder --subs-only testphp.vulnweb.com > subdomains.txt
+2025-10-27 22:49:48,385 [WARNING] Command produced no output: assetfinder --subs-only testphp.vulnweb.com > subdomains.txt
+2025-10-27 22:49:54,798 [INFO] 
+--- STEP 3 | PHASE: reconnaissance ---
+2025-10-27 22:49:57,906 [INFO] AI → COMMAND: amass enum -passive -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:49:57,906 [INFO] AI → REASONING: Previous passive subdomain enumeration attempts with subfinder and assetfinder yielded no results. Using amass for passive enumeration might provide different results due to its broader data sources.
+2025-10-27 22:49:57,909 [INFO] Executing: amass enum -passive -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:50:33,126 [WARNING] Command produced no output: amass enum -passive -d testphp.vulnweb.com -o subdomains.txt
+2025-10-27 22:50:36,296 [INFO] 
+--- STEP 4 | PHASE: reconnaissance ---
+2025-10-27 22:50:38,675 [INFO] AI → COMMAND: dnsx -d testphp.vulnweb.com -resp-only -o dnsx_output.txt
+2025-10-27 22:50:38,675 [INFO] AI → REASONING: Previous passive subdomain enumeration attempts failed. Using dnsx for DNS resolution to check if there are any DNS records available for the target domain.
+2025-10-27 22:50:38,680 [INFO] Executing: dnsx -d testphp.vulnweb.com -resp-only -o dnsx_output.txt
+2025-10-27 22:50:46,525 [INFO] 
+--- STEP 5 | PHASE: reconnaissance ---
+2025-10-27 22:50:49,214 [INFO] AI → COMMAND: findomain -t testphp.vulnweb.com -o
+2025-10-27 22:50:49,214 [INFO] AI → REASONING: Previous passive subdomain enumeration attempts failed. Using findomain as an alternative passive tool to discover subdomains.
+2025-10-27 22:50:49,216 [INFO] Executing: findomain -t testphp.vulnweb.com -o
+2025-10-27 22:51:01,693 [INFO] 
+--- STEP 6 | PHASE: reconnaissance ---
+2025-10-27 22:51:04,273 [INFO] AI → COMMAND: httpx -l subdomains.txt -o live_hosts.txt -silent -t 100
+2025-10-27 22:51:04,273 [INFO] AI → REASONING: Since subdomain enumeration did not yield results, we should verify if any of the previously identified subdomains are live using httpx. This will help us confirm active hosts before proceeding to the scanning phase.
+2025-10-27 22:51:04,275 [INFO] Executing: httpx -l subdomains.txt -o live_hosts.txt -silent -t 100
